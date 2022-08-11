@@ -1,0 +1,7 @@
+venv/
+source/db.sqlite3
+source/*/migrations/*
+!source/*/migrations/__init__.py
+
+
+.idea/
