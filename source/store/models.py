@@ -52,11 +52,12 @@ class Category(models.Model):
 
 class Product(models.Model):
     title = models.CharField(max_length=255)
-    description = models.TextField(null=True, blank=True)
+    slug = models.SlugField(unique=True)
+    description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     inventory = models.PositiveIntegerField(default=1)
-    categories = models.ManyToManyField(Category, related_name='products')
-    promotions = models.ManyToManyField(Promotion, related_name='products')
+    categories = models.ManyToManyField(Category, related_name='products', blank=True)
+    promotions = models.ManyToManyField(Promotion, related_name='products', blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
